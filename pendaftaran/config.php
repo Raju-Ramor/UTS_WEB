@@ -1,50 +1,21 @@
 <?php
-    class database{
-        var $host = "localhost";
-        var $username = "root";
-        var $password = "";
-        var $database = "wisata";
-        var $koneksi;
-     
-        function __construct(){
-            $this->koneksi = mysqli_connect($this->host, $this->username, $this->password,$this->database);
-        }
-     
-     
-        function register($username,$password,$email)
-        {	
-            $insert = mysqli_query($this->koneksi,"insert into daftar values ('','$username','$password','$email')");
-            return $insert;
-        }
-     
-        function login($username,$password,$remember)
-        {
-            $query = mysqli_query($this->koneksi,"select * from daftar where username='$username'");
-            $data_user = $query->fetch_array();
-            if(password_verify($password,$data_user['password']))
-            {
-                
-                if($remember)
-                {
-                    setcookie('username', $username, time() + (60 * 60 * 24 * 5), '/');
-                    setcookie('nama', $data_user['nama'], time() + (60 * 60 * 24 * 5), '/');
-                }
-                $_SESSION['username'] = $username;
-                $_SESSION['nama'] = $data_user['nama'];
-                $_SESSION['is_login'] = TRUE;
-                return TRUE;
-            }
-        }
-     
-        function relogin($username)
-        {
-            $query = mysqli_query($this->koneksi,"select * from daftar where username='$username'");
-            $data_user = $query->fetch_array();
-            $_SESSION['username'] = $username;
-            $_SESSION['nama'] = $data_user['nama'];
-            $_SESSION['is_login'] = TRUE;
-        }
-    } 
+    
+        $database_host = "localhost";
+        $database_username = "root";
+        $database_password = "";
+        $database = "wisata";
+
+    
+        try{
+            //sintaks berhasil?  
+            $database_connection= new PDO("mysql:host=$database_host;dbname=$database",
+            $database_username, $database_password); 
+            $cek = "Koneksi Berhasil";
+           //  echo $cek;
+           }catch(PDOException $x){
+           die($x->getMessage());
+           }
+        
      
      
     ?>

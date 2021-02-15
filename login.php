@@ -1,41 +1,3 @@
-<?php 
-session_start();
-include_once('pendaftaran/config.php');
-$database = new database();
-
-if(isset($_SESSION['is_login']))
-{
-    header('location:menu_utama.php');
-}
-
-if(isset($_COOKIE['username']))
-{
-  $database->relogin($_COOKIE['username']);
-  header('location:menu_utama.php');
-}
-
-if(isset($_POST['login']))
-{
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if(isset($_POST['remember']))
-    {
-      $remember = TRUE;
-    }
-    else
-    {
-      $remember = FALSE;
-    }
-
-    if($database->login($username,$password,$remember))
-    {
-      header('location:menu_utama.php');
-    }
-}
-?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -45,11 +7,11 @@ if(isset($_POST['login']))
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
   <body>
-    <div id="login">
+   
     <div class="container">
         <h4 class="text-center">FORM LOGIN</h4>
         <hr>
-        <form action="" class="form-signin" method="post">
+        <form action="pendaftaran/login.php" class="form-signin" method="post">
             <div class="container">
                 <form name="formPendaftaran" action="menu_utama.php" method="post" onsubmit="return validateForm()">
                   <div class="form-group">
@@ -83,6 +45,11 @@ if(isset($_POST['login']))
       </script> -->
 
    
-    </div>
+   </div>
+   <footer class="jumbotron text-center" style="margin-bottom: 0;">
+                    <div class="col-md-12" >
+                        <h7>@Copyright by 18111129_RajuRamor_TIFRP18CNSA_UASWEB1</h7>
+                    </div>
+                  </footer>
   </body>
 </html>

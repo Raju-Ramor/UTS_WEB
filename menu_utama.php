@@ -1,10 +1,4 @@
-<?php 
-session_start();
-if(! isset($_SESSION['is_login']))
-{
-  header('location:login.php');
-}
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -60,6 +54,11 @@ if(! isset($_SESSION['is_login']))
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+    <footer class="jumbotron text-center" style="margin-bottom: 0;">
+                    <div class="col-md-12" >
+                        <h7>@Copyright by 18111129_RajuRamor_TIFRP18CNSA_UASWEB1</h7>
+                    </div>
+                  </footer>
   </body>
 </html>
 

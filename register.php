@@ -1,18 +1,3 @@
-<?php 
-include_once('pendaftaran/config.php');
-$database = new database();
-if(isset($_POST['register']))
-{
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-    if($database->register($username,$password,$email))
-    {
-      header('location:login.php');
-    }
-}
- 
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -42,7 +27,7 @@ if(isset($_POST['register']))
                 <div class="card card-bgregist">
                     <div class="card-body  ">
                         <div>
-                            <form method="post" action=" ">
+                            <form method="POST" action="pendaftaran/regis.php">
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="email" id="email" placeholder="E-mail">
                                 </div>
@@ -62,6 +47,11 @@ if(isset($_POST['register']))
                 </div>
             </div>
         </div>
+        <footer class="jumbotron text-center" style="margin-bottom: 0;">
+                    <div class="col-md-12" >
+                        <h7>@Copyright by 18111129_RajuRamor_TIFRP18CNSA_UASWEB1</h7>
+                    </div>
+                  </footer>
 </body>
 
 </html>
